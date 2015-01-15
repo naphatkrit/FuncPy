@@ -8,6 +8,7 @@ def memoize(func):
     '''
     func = curry.curry(func) 
     memo = dict()
+    @curry.curry
     def helper(x):
         key = x
         if key not in memo:
@@ -17,5 +18,3 @@ def memoize(func):
             memo[key] = answer
         return memo[key]
     return helper
-
-

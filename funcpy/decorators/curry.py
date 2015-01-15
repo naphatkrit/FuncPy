@@ -23,6 +23,30 @@ class _CurriedFunc:
         else:
             return self.__func(*args)
 
+    def __ror__(self, arg):
+        '''
+        pipeline
+        '''
+        return self(arg)
+
+    def __rshift__(self, g):
+        '''
+        function composition g(self(x))
+        '''
+        if not isinstance(g, _CurriedFunc):
+            g = _CurriedFunc(g)
+        assert(isinstance(g, _CurriedFunc))
+        return _CurriedFunc(lambda x: g(self(x)))
+
+    def __lshift__(self, f):
+        '''
+        function composition self(f(x))
+        '''
+        if not isinstance(f, _CurriedFunc):
+            f = _CurriedFunc(f)
+        assert(isinstance(f, _CurriedFunc))
+        return _CurriedFunc(lambda x: self(f(x)))
+
     def is_same_curry(self, other):
         return self.__func is other.__func
 
