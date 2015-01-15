@@ -1,2 +1,2 @@
-# PyFunc
-PyFunc is a functional programming library for Python.
+# FuncPy
+FuncPy is a functional programming library for Python.
