@@ -1,3 +1,7 @@
+'''
+Sequential implementations of common functional algorithms
+'''
+
 from funcpy.decorators.curry import curry
 
 _map = map
